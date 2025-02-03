@@ -70,35 +70,16 @@ const generateData = async (req, res) => {
         let usersCreated = [];
         let petsCreated = [];
 
-        // Generar usuarios si se solicita
         if (users) {
             usersCreated = await generateUsers(parseInt(users));
-            // Guardar los usuarios en la base de datos
-            await usersService.create(usersCreated);  // Guarda en la DB
+            await usersService.create(usersCreated); 
         }
 
-        // Generar mascotas si se solicita
         if (pets) {
             petsCreated = await generatePets(parseInt(pets));
-            // Guardar las mascotas en la base de datos
-            await petsService.create(petsCreated);  // Guarda en la DB
+            await petsService.create(petsCreated);  
         }
 
-        // Obtener los usuarios y mascotas guardados
-        // const usersSaved = await usersService.getAll();
-        // const petsSaved = await petsService.getAll();
-
-    
-        // if (users) {
-        //     await generateUsers(parseInt(users));
-        // }
-    
-        // if (pets) {
-        //     await generatePets(parseInt(pets));
-        // }
-    
-        // const usersCreated = await usersService.getAll();
-        // const petsCreated = await petsService.getAll();
     
         res.send({
             status: 'success',
