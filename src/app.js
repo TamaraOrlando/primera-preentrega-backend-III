@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+import compression from 'express-compression';
 import config from "./config/config.js";
 import errorHandler from './middleware/error.js';
 
@@ -21,6 +22,15 @@ const connection = mongoose.connect(MONGO_URL);
 
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use(compression({
+    brotli: {
+        enabled: true,
+        zlib: {}
+    }
+}));
+
 
 app.use('/api/users',usersRouter);
 app.use('/api/pets',petsRouter);
