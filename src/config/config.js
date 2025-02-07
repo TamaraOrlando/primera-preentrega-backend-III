@@ -10,6 +10,7 @@ dotenv.config({
 
 
 export default{
+    NODE_ENV: process.env.NODE_ENV,
     PORT: process.env.PUERTO,
     MONGO_URL: process.env.MONGO_URL
 }
